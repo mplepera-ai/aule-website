@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aule Engineering</title>
+<meta name="description" content="Aule Engineering Consultants, LLC — Florida engineering consulting: pool &amp; spa, civil &amp; site, construction engineering, and project representation.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: a quiet, white consulting-firm page — logo-led header,
+     a calm hero, a four-part capability list, a credentialed principal
+     bio, a plain-spoken process section, and a direct contact block.
+     White background always (no dark-mode flip); the brand blue is used
+     only as an accent. The blueprint motif survives only as one faint
+     corner mark in the hero. */
+  :root{
+    --bg:#FFFFFF; --surface:#FFFFFF; --ink:#22273A; --muted:#5B6279;
+    --navy:#1E2550; --brand:#363E8E; --slate:#5B6B9E;
+    --line:#E6E5DD; --line-strong:#D7D6CC;
+    --font-display:'Fraunces',Georgia,serif;
+    --font-body:'IBM Plex Sans',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    color-scheme:light;
+  }
+  /* Background is always white; the brand blue is used only as an accent,
+     not swapped for a dark theme. */
+
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font-body); line-height:1.6; margin:0;}
+  .wrap{max-width:780px; margin-inline:auto; padding-inline:20px;}
+  h1,h2,h3{font-family:var(--font-display); text-wrap:balance; margin:0; color:var(--navy);}
+  p{margin:0;}
+  a{color:inherit;}
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.72rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--slate); display:block;
+  }
+
+  header{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:5;
+    background:var(--bg); border-bottom:1px solid var(--line);
+  }
+  .headrow{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:14px;}
+  .mark{display:flex; align-items:center;}
+  .mark .logo-img{height:40px; width:auto; flex:none;}
+  nav{display:flex; align-items:center; gap:26px; flex-wrap:wrap;}
+  nav a.navlink{font-size:.92rem; color:var(--muted); text-decoration:none; border-bottom:1px solid transparent;}
+  nav a.navlink:hover{color:var(--brand); border-color:var(--brand);}
+
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:.92rem;
+    padding:11px 20px; border-radius:4px; border:1px solid var(--brand);
+    cursor:pointer; background:none; color:var(--navy); text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  .btn.solid{background:var(--brand); color:var(--bg); border-color:var(--brand);}
+  .btn:focus-visible{outline:2px solid var(--brand); outline-offset:2px;}
+
+  .hero{padding-block:64px 52px; position:relative; overflow:hidden;}
+  .hero .grid-mark{
+    position:absolute; right:-40px; top:10px; width:200px; height:200px;
+    background-image:
+      linear-gradient(rgba(54,62,142,.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(54,62,142,.14) 1px, transparent 1px);
+    background-size:20px 20px; opacity:.6; pointer-events:none;
+  }
+  .hero h1{font-size:clamp(2rem,4.6vw,2.7rem); max-width:19ch; font-weight:600;}
+  .hero p.lede{margin-top:18px; max-width:54ch; color:var(--muted); font-size:1.08rem;}
+  .hero .ctarow{display:flex; gap:12px; margin-top:30px; flex-wrap:wrap;}
+
+  section{padding-block:48px; border-top:1px solid var(--line);}
+  .cap-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:30px;}
+  @media (max-width:560px){ .cap-grid{grid-template-columns:1fr;} }
+  .cap{min-width:0;}
+  .cap h3{font-size:1.15rem; font-weight:600;}
+  .cap p{margin-top:8px; color:var(--muted); font-size:.96rem;}
+
+  .about-grid{display:flex; gap:40px; margin-top:28px; flex-wrap:wrap;}
+  .about-bio{flex:1 1 360px; min-width:0;}
+  .about-bio p{color:var(--muted); font-size:1rem; margin-top:14px;}
+  .creds{flex:1 1 260px; min-width:0; border-left:1px solid var(--line); padding-left:28px;}
+  @media (max-width:640px){ .creds{border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:20px;} }
+  .creds .who{font-family:var(--font-display); font-size:1.2rem; font-weight:600; color:var(--navy);}
+  .creds ul{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .creds li{font-size:.92rem; color:var(--ink); padding-left:14px; position:relative;}
+  .creds li::before{content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; background:var(--brand); border-radius:50%;}
+
+  .steps{display:flex; flex-direction:column; gap:0; margin-top:28px;}
+  .step{display:flex; gap:20px; padding-block:18px; border-top:1px solid var(--line);}
+  .step:first-child{border-top:none;}
+  .step .idx{font-family:var(--font-mono); color:var(--slate); font-size:.85rem; min-width:2.2ch; padding-top:3px;}
+  .step .title{font-weight:600; font-size:1.02rem;}
+  .step .desc{color:var(--muted); font-size:.94rem; margin-top:4px;}
+
+  .reg-strip{
+    margin-top:26px; border:1px solid var(--line); border-radius:6px; background:var(--surface);
+    padding:20px 24px; display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between;
+  }
+  .reg-item .k{font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:4px;}
+  .reg-item .v{font-size:.98rem; font-weight:500;}
+  .reg-strip a{color:var(--brand); text-decoration:underline; text-underline-offset:2px;}
+
+  .contact-grid{display:flex; gap:40px; flex-wrap:wrap; margin-top:26px;}
+  .contact-item{min-width:220px;}
+  .contact-item .v{font-family:var(--font-mono); font-size:1.15rem; margin-top:6px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .copybtn{
+    font-family:var(--font-body); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+    border:1px solid var(--line-strong); background:none; color:var(--muted); border-radius:3px;
+    padding:4px 9px; cursor:pointer;
+  }
+  .copybtn:hover{border-color:var(--brand); color:var(--brand);}
+  .copybtn[data-done="1"]{color:var(--brand); border-color:var(--brand);}
+  .intake-note{margin-top:28px; max-width:56ch;}
+  .intake-note .eyebrow{margin-bottom:8px;}
+  .intake-note ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:.95rem; display:flex; flex-direction:column; gap:6px;}
+
+  footer{padding-block:28px; padding-bottom:calc(28px + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line);}
+  footer p{font-family:var(--font-body); font-size:.78rem; color:var(--muted); line-height:1.6;}
+  footer p + p{margin-top:6px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap headrow">
+    <div class="mark">
+      <img src="logo.png" alt="Aule Engineering" class="logo-img">
+    </div>
+    <nav>
+      <a class="navlink" href="#services">Services</a>
+      <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#contact">Contact</a>
+      <a class="btn solid" href="#contact">Request Engineering Services</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" style="border-top:none;">
+    <div class="grid-mark" aria-hidden="true"></div>
+    <span class="eyebrow">Florida Engineering Consultants</span>
+    <h1 style="margin-top:12px;">Civil, structural and hydraulic engineering for projects across Florida.</h1>
+    <p class="lede">Aule Engineering Consultants, LLC provides engineering design, review, permitting and construction support for residential, commercial and municipal projects &mdash; led directly by a Florida-licensed Professional Engineer.</p>
+    <div class="ctarow">
+      <a class="btn solid" href="#contact">Request Engineering Services</a>
+      <a class="btn" href="#services">View Capabilities</a>
+    </div>
+  </section>
+
+  <section id="services">
+    <span class="eyebrow">Engineering Capabilities</span>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3>Pool &amp; Spa Engineering</h3>
+        <p>Structural and hydraulic engineering for residential and commercial pools, spas, equipment modifications, and permitting.</p>
+      </div>
+      <div class="cap">
+        <h3>Civil &amp; Site Engineering</h3>
+        <p>Site grading, drainage, utilities, pavement, and water and sewer infrastructure, with permit coordination.</p>
+      </div>
+      <div class="cap">
+        <h3>Construction Engineering</h3>
+        <p>Engineering support during construction &mdash; field evaluations, design clarification, and conformance review.</p>
+      </div>
+      <div class="cap">
+        <h3>Project &amp; Owner Representation</h3>
+        <p>Engineering-led coordination, constructability review, agency coordination, and project management.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <span class="eyebrow">Experienced Leadership, Independent Attention</span>
+    <div class="about-grid">
+      <div class="about-bio">
+        <h2 style="font-size:1.4rem;">Principal's background</h2>
+        <p>Aule Engineering Consultants is a Florida engineering practice led directly by its principal, with no layers between the client and the engineer doing the work. Matthew LePera, PE brings over a decade of municipal engineering, capital-program, and public-infrastructure experience to every project, including managing a 63-person engineering division and delivering infrastructure programs ranging from multi-million-dollar to $100M-plus.</p>
+      </div>
+      <div class="creds">
+        <div class="who">Matthew LePera, PE</div>
+        <ul>
+          <li>Florida-licensed Professional Engineer</li>
+          <li>PMP (Project Management Professional)</li>
+          <li>FAA Part 107 Drone Pilot</li>
+          <li>M.Eng., University of Florida</li>
+          <li>B.Eng., Florida Gulf Coast University</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="eyebrow">How We Work</span>
+    <div class="steps">
+      <div class="step">
+        <div class="idx">01</div>
+        <div><div class="title">Send the project</div><div class="desc">Plans, permit comments, calculations, or a description of the project.</div></div>
+      </div>
+      <div class="step">
+        <div class="idx">02</div>
+        <div><div class="title">Scope &amp; proposal</div><div class="desc">Aule reviews what's needed and returns a defined scope, fee, and schedule.</div></div>
+      </div>
+      <div class="step">
+        <div class="idx">03</div>
+        <div><div class="title">Engineering &amp; coordination</div><div class="desc">Design, calculations, and agency coordination, with revisions as required.</div></div>
+      </div>
+      <div class="step">
+        <div class="idx">04</div>
+        <div><div class="title">Signed deliverables</div><div class="desc">Permit-ready documents, digitally signed and sealed where applicable.</div></div>
+      </div>
+    </div>
+    <div class="reg-strip">
+      <div class="reg-item">
+        <span class="k">Status</span>
+        <span class="v">Florida Registered Engineering Business</span>
+      </div>
+      <div class="reg-item">
+        <span class="k">Qualified By</span>
+        <span class="v">Matthew LePera, PE</span>
+      </div>
+      <div class="reg-item">
+        <span class="k">Service Area</span>
+        <span class="v">Statewide &mdash; Florida</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:none;">
+    <span class="eyebrow">Get in Touch</span>
+    <h2 style="margin-top:12px; font-size:1.5rem;">Request engineering services.</h2>
+    <p style="color:var(--muted); margin-top:10px; max-width:50ch;">Reach out by phone or email with your project, and Aule Engineering will follow up with scope and timing.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="eyebrow">Phone</span>
+        <div class="v">
+          <span id="phoneText">(239) 898-1664</span>
+          <button class="copybtn" id="copyPhone" type="button">Copy</button>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Email</span>
+        <div class="v">
+          <span id="emailText">mplepera@auleengineering.com</span>
+          <button class="copybtn" id="copyEmail" type="button">Copy</button>
+        </div>
+      </div>
+    </div>
+    <div class="intake-note">
+      <span class="eyebrow">To get a quote back quickly, include:</span>
+      <ul>
+        <li>Project type and location (city/county)</li>
+        <li>Residential or commercial</li>
+        <li>Plans, permit comments, or calculations, if you have them</li>
+        <li>Target timeline</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>Aule Engineering Consultants, LLC &middot; Florida limited liability company &middot; auleengineering.com</p>
+  <p>Florida Registered Engineering Business, qualified by Matthew LePera, PE. This site is for general information and does not constitute an engineering opinion on any specific project.</p>
+</footer>
+
+<script>
+  function wireCopy(btnId, textId){
+    var btn = document.getElementById(btnId);
+    var el = document.getElementById(textId);
+    if(!btn || !el) return;
+    btn.addEventListener('click', function(){
+      var value = el.textContent;
+      function done(){
+        btn.textContent = 'Copied';
+        btn.setAttribute('data-done','1');
+        setTimeout(function(){ btn.textContent='Copy'; btn.removeAttribute('data-done'); }, 1600);
+      }
+      try{
+        navigator.clipboard.writeText(value).then(done).catch(function(){
+          try{
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            done();
+          }catch(e){}
+        });
+      }catch(e){
+        try{
+          var range = document.createRange();
+          range.selectNodeContents(el);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          done();
+        }catch(e2){}
+      }
+    });
+  }
+  wireCopy('copyPhone','phoneText');
+  wireCopy('copyEmail','emailText');
+</script>
+</body>
+</html>
