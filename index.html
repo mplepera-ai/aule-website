@@ -9,6 +9,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0FHXT02K8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y0FHXT02K8');
+</script>
 <style>
   /* Layout concept: a quiet, white consulting-firm page — logo-led header,
      a calm hero, a four-part capability list, a credentialed principal
@@ -248,12 +256,12 @@
       <div class="tool-card">
         <h3>Copestone</h3>
         <p>Pool &amp; spa design calculator &mdash; flotation/uplift, shell reinforcement, hydraulics, vent schedule, electrical load, and lot coverage checks.</p>
-        <a class="btn" href="https://copestone.onrender.com" target="_blank" rel="noopener">Open Copestone &rarr;</a>
+        <a class="btn" href="https://copestone.onrender.com" target="_blank" rel="noopener" data-tool="copestone">Open Copestone &rarr;</a>
       </div>
       <div class="tool-card">
         <h3>StormRoute</h3>
         <p>Stormwater routing &amp; permitting calculator for South Florida site drainage modeling.</p>
-        <a class="btn" href="https://hydraulic-modeling.onrender.com" target="_blank" rel="noopener">Open StormRoute &rarr;</a>
+        <a class="btn" href="https://hydraulic-modeling.onrender.com" target="_blank" rel="noopener" data-tool="stormroute">Open StormRoute &rarr;</a>
       </div>
     </div>
   </section>
@@ -332,6 +340,18 @@
   }
   wireCopy('copyPhone','phoneText');
   wireCopy('copyEmail','emailText');
+
+  // GA4 click tracking for the calculator cards: fires "calculator_click"
+  // with which tool was opened, separate from the generic outbound-link
+  // event GA's Enhanced Measurement already sends -- this is the one to
+  // filter by in reports.
+  document.querySelectorAll('.tool-card a[data-tool]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (typeof gtag === 'function') {
+        gtag('event', 'calculator_click', { tool: a.getAttribute('data-tool') });
+      }
+    });
+  });
 </script>
 </body>
 </html>
