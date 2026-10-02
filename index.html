@@ -45,7 +45,7 @@
   }
   .headrow{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-block:14px;}
   .mark{display:flex; align-items:center;}
-  .mark .logo-img{height:40px; width:auto; flex:none;}
+  .mark .logo-img{height:64px; width:auto; flex:none;}
   nav{display:flex; align-items:center; gap:26px; flex-wrap:wrap;}
   nav a.navlink{font-size:.92rem; color:var(--muted); text-decoration:none; border-bottom:1px solid transparent;}
   nav a.navlink:hover{color:var(--brand); border-color:var(--brand);}
@@ -103,6 +103,14 @@
   .reg-item .v{font-size:.98rem; font-weight:500;}
   .reg-strip a{color:var(--brand); text-decoration:underline; text-underline-offset:2px;}
 
+  .tools-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:28px;}
+  @media (max-width:560px){ .tools-grid{grid-template-columns:1fr;} }
+  .tool-card{border:1px solid var(--line); border-radius:6px; padding:22px; display:flex; flex-direction:column; gap:10px;}
+  .tool-card h3{font-size:1.08rem; font-weight:600;}
+  .tool-card p{color:var(--muted); font-size:.92rem;}
+  .tool-card .btn{align-self:flex-start; margin-top:4px;}
+  .tool-card .soon{font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--slate);}
+
   .contact-grid{display:flex; gap:40px; flex-wrap:wrap; margin-top:26px;}
   .contact-item{min-width:220px;}
   .contact-item .v{font-family:var(--font-mono); font-size:1.15rem; margin-top:6px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
@@ -131,6 +139,7 @@
     <nav>
       <a class="navlink" href="#services">Services</a>
       <a class="navlink" href="#about">About</a>
+      <a class="navlink" href="#tools">Calculators</a>
       <a class="navlink" href="#contact">Contact</a>
       <a class="btn solid" href="#contact">Request Engineering Services</a>
     </nav>
@@ -214,7 +223,11 @@
     <div class="reg-strip">
       <div class="reg-item">
         <span class="k">Status</span>
-        <span class="v">Florida Registered Engineering Business</span>
+        <span class="v">Florida Registered Engineering Business &mdash; Current</span>
+      </div>
+      <div class="reg-item">
+        <span class="k">Registry No.</span>
+        <span class="v">37885</span>
       </div>
       <div class="reg-item">
         <span class="k">Qualified By</span>
@@ -223,6 +236,24 @@
       <div class="reg-item">
         <span class="k">Service Area</span>
         <span class="v">Statewide &mdash; Florida</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <span class="eyebrow">Engineering Calculators</span>
+    <h2 style="margin-top:12px; font-size:1.4rem;">Tools built by Aule.</h2>
+    <p style="color:var(--muted); margin-top:10px; max-width:56ch;">In-house calculators developed for Aule's own engineering practice, made available here as a reference. Results are a working aid &mdash; not a substitute for a sealed engineering review.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>Copestone</h3>
+        <p>Pool &amp; spa design calculator &mdash; flotation/uplift, shell reinforcement, hydraulics, vent schedule, electrical load, and lot coverage checks.</p>
+        <a class="btn" href="https://copestone.onrender.com" target="_blank" rel="noopener">Open Copestone &rarr;</a>
+      </div>
+      <div class="tool-card">
+        <h3>StormRoute</h3>
+        <p>Stormwater routing &amp; permitting calculator for South Florida site drainage modeling.</p>
+        <a class="btn" href="https://hydraulic-modeling.onrender.com" target="_blank" rel="noopener">Open StormRoute &rarr;</a>
       </div>
     </div>
   </section>
