@@ -40,7 +40,8 @@
   }
   function decide(x){
     remember(x);if(x==="yes")activate();else refuse();
-    const box=document.getElementById("aule-consent");if(box)box.hidden=true;
+    const indicator=document.getElementById("aule-analytics-status");
+    if(indicator)indicator.textContent=x==="yes"?"Analytics: allowed":"Analytics: off (no Google Analytics tag loaded)";
   }
   function setup(){
     // No banner or popup. Opt-in choices are available only on the privacy page.
