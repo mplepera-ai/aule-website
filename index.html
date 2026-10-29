@@ -9,14 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0FHXT02K8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Y0FHXT02K8');
-</script>
+<!-- Google Analytics is blocked until affirmative consent. -->
+<script defer src="privacy-analytics.js"></script>
 <style>
   /* Layout concept: a quiet, white consulting-firm page — logo-led header,
      a calm hero, a four-part capability list, a credentialed principal
@@ -301,6 +295,7 @@
 <footer class="wrap">
   <p>Aule Engineering Consultants, LLC &middot; Florida limited liability company &middot; auleengineering.com</p>
   <p>Florida Registered Engineering Business, qualified by Matthew LePera, PE. This site is for general information and does not constitute an engineering opinion on any specific project.</p>
+  <p><a href="privacy.html">Website Privacy Notice</a></p>
 </footer>
 
 <script>
@@ -347,7 +342,7 @@
   // filter by in reports.
   document.querySelectorAll('.tool-card a[data-tool]').forEach(function(a){
     a.addEventListener('click', function(){
-      if (typeof gtag === 'function') {
+      if (window.auleAnalyticsAllowed && typeof gtag === 'function') {
         gtag('event', 'calculator_click', { tool: a.getAttribute('data-tool') });
       }
     });
@@ -355,7 +350,7 @@
 
   // ---- Lead and interest events (GA4) ----
   function ga(name, params){
-    try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){}
+    try { if (window.auleAnalyticsAllowed && typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){}
   }
 
   // Phone / email intent: Copy buttons, plus any tel:/mailto: link clicks.
