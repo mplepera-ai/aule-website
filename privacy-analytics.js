@@ -4,7 +4,7 @@
   const ID="G-Y0FHXT02K8", KEY="aule-analytics-optout-v2";
   const live=["auleengineering.com","www.auleengineering.com"].includes(location.hostname);
   let allowed=false,loaded=false;
-  function pref(){try{const p=localStorage.getItem(KEY);return p==="yes"||p==="no"?p:null;}catch(_){return null;}}
+  function pref(){try{const p=localStorage.getItem(KEY);if(p==="yes"||p==="no")return p;return localStorage.getItem("aule-analytics-consent-v1")==="no"?"no":null;}catch(_){return null;}}
   function remember(x){try{localStorage.setItem(KEY,x);}catch(_){}}
   function gtag(){window.dataLayer.push(arguments);}
   function activate(){
