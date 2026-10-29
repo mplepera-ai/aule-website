@@ -26,10 +26,16 @@ form entries or full URL query strings.</p>
 retargeting or sale of personal data. We save only your analytics consent decision in local
 browser storage to remember the preference. Rejecting analytics does not disable the site.</p>
 <h2>Choice, withdrawal and cookies</h2>
-<p>Select Allow analytics or Reject analytics. Reopen the choice at any time using Analytics
-preferences at the bottom of the homepage. Withdrawing consent stops further events and
-attempts to delete the site's GA4 cookies; it cannot erase prior processing by Google.
-You can also remove cookies using your browser's settings.</p>
+<p>There is no cookie banner or popup. Optional Google Analytics is off unless you explicitly
+allow it below. Your choice is saved for this browser. You can return here and change your
+preference at any time; withdrawing consent stops new analytics events and attempts to delete
+the website's GA4 cookies. It does not erase data processed before withdrawal.</p>
+<section id="analytics-controls" aria-label="Optional Google Analytics settings">
+  <h3>Optional analytics preference</h3>
+  <p id="aule-analytics-status" role="status">Analytics is off unless you have opted in.</p>
+  <button type="button" id="aule-analytics-accept">Allow optional analytics</button>
+  <button type="button" id="aule-analytics-reject">Keep analytics off / withdraw consent</button>
+</section>
 <h2>Other external services</h2>
 <p>Our website references Google's hosted web fonts, which can result in browser requests
 to Google when the page loads. You can read Google's <a href="https://policies.google.com/privacy">Privacy Policy</a>.
@@ -41,4 +47,5 @@ your consent. Google Analytics retention is governed by our property's configure
 which should be reviewed in Google Analytics Admin. We do not sell website data.</p>
 <p>Contact <a href="mailto:mplepera@auleengineering.com">mplepera@auleengineering.com</a>
 regarding website privacy questions and choices. We will update this notice for material changes.</p>
+<script src="privacy-analytics.js" defer></script>
 </body></html>
