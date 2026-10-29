@@ -336,71 +336,8 @@
   wireCopy('copyPhone','phoneText');
   wireCopy('copyEmail','emailText');
 
-  // GA4 click tracking for the calculator cards: fires "calculator_click"
-  // with which tool was opened, separate from the generic outbound-link
-  // event GA's Enhanced Measurement already sends -- this is the one to
-  // filter by in reports.
-  document.querySelectorAll('.tool-card a[data-tool]').forEach(function(a){
-    a.addEventListener('click', function(){
-      if (window.auleAnalyticsAllowed && typeof gtag === 'function') {
-        gtag('event', 'calculator_click', { tool: a.getAttribute('data-tool') });
-      }
-    });
-  });
-
-  // ---- Lead and interest events (GA4) ----
-  function ga(name, params){
-    try { if (window.auleAnalyticsAllowed && typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){}
-  }
-
-  // Phone / email intent: Copy buttons, plus any tel:/mailto: link clicks.
-  var cp = document.getElementById('copyPhone');
-  var ce = document.getElementById('copyEmail');
-  if (cp) cp.addEventListener('click', function(){ ga('contact_phone_click', { method: 'copy' }); });
-  if (ce) ce.addEventListener('click', function(){ ga('contact_email_click', { method: 'copy' }); });
-  document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
-    if (!a) return;
-    ga(a.href.indexOf('tel:') === 0 ? 'contact_phone_click' : 'contact_email_click', { method: 'link' });
-  });
-
-  // "Request Engineering Services" buttons.
-  document.querySelectorAll('a.btn.solid[href="#contact"]').forEach(function(a){
-    a.addEventListener('click', function(){ ga('request_services_click'); });
-  });
-
-  // Section views (fires once per section per visit, when 50% visible).
-  // service_section_view stands in for service-page views on this one-page site.
-  if ('IntersectionObserver' in window) {
-    var names = { services: 'service_section_view', about: 'about_section_view', tools: 'tools_section_view', contact: 'contact_section_view' };
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting && names[en.target.id]) {
-          ga(names[en.target.id]);
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    Object.keys(names).forEach(function(id){
-      var el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-  }
-
-  // qualified_engagement: 60 seconds of ACTIVE time (tab visible and the
-  // visitor scrolled/clicked/typed/moved within the last 30 seconds).
-  (function(){
-    var active = 0, last = Date.now(), fired = false;
-    function touch(){ last = Date.now(); }
-    ['scroll','click','keydown','mousemove','touchstart'].forEach(function(t){
-      window.addEventListener(t, touch, { passive: true });
-    });
-    setInterval(function(){
-      if (fired) return;
-      if (document.visibilityState === 'visible' && Date.now() - last < 30000) active++;
-      if (active >= 60) { fired = true; ga('qualified_engagement', { seconds: 60 }); }
-    }, 1000);
-  })();
+  // Traffic-only analytics is handled by privacy-analytics.js.
+  // No contact, calculator, form or engagement event details are collected.
 </script>
 </body>
 </html>
