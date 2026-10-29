@@ -43,24 +43,14 @@
     const box=document.getElementById("aule-consent");if(box)box.hidden=true;
   }
   function setup(){
-    if(!live)return;
-    const css=document.createElement("link");css.rel="stylesheet";css.href="privacy-analytics.css";document.head.appendChild(css);
-    const div=document.createElement("aside");div.id="aule-consent";
-    div.setAttribute("role","region");div.setAttribute("aria-label","Website analytics choice");
-    const p=document.createElement("p");
-    p.append("Optional Google Analytics: allow Aule Engineering to understand general website visits and service interest. No Analytics tag loads before consent. See the ");
-    const a=document.createElement("a");a.href="privacy.html";a.textContent="Privacy Notice";p.append(a,".");
-    div.appendChild(p);
-    [["Allow analytics","yes"],["Reject analytics","no"]].forEach(([text,value])=>{
-      const b=document.createElement("button");b.type="button";b.textContent=text;
-      if(value==="no")b.className="reject";b.addEventListener("click",()=>decide(value));div.appendChild(b);
-    });
-    div.hidden=pref()!==null;document.body.appendChild(div);
-    const footer=document.querySelector("footer");
-    if(footer){
-      const b=document.createElement("button");b.type="button";b.className="aule-consent-preferences";
-      b.textContent="Analytics preferences";b.addEventListener("click",()=>{div.hidden=false;});footer.appendChild(b);
-    }
+    // No banner or popup. Opt-in choices are available only on the privacy page.
+    const accept=document.getElementById("aule-analytics-accept");
+    const reject=document.getElementById("aule-analytics-reject");
+    const status=document.getElementById("aule-analytics-status");
+    if(status)status.textContent=pref()==="yes"?"Analytics: allowed":
+      "Analytics: off (no optional Google Analytics tag loaded)";
+    if(accept)accept.addEventListener("click",()=>decide("yes"));
+    if(reject)reject.addEventListener("click",()=>decide("no"));
   }
   window.auleAnalyticsAllowed=false;
   if(live&&pref()==="yes")activate();
