@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<!-- Google Analytics is blocked until affirmative consent. -->
+<!-- Non-advertising GA4 website analytics, with opt-out on the linked privacy page. -->
 <script defer src="privacy-analytics.js"></script>
 <style>
   /* Layout concept: a quiet, white consulting-firm page — logo-led header,
@@ -132,57 +132,57 @@
   footer p + p{margin-top:6px;}
 </style>
 </head>
-<body>
+<body data-page="home">
 <header>
   <div class="wrap headrow">
     <div class="mark">
       <img src="logo.png" alt="Aule Engineering" class="logo-img">
     </div>
     <nav>
-      <a class="navlink" href="#services">Services</a>
-      <a class="navlink" href="#about">About</a>
-      <a class="navlink" href="#tools">Calculators</a>
-      <a class="navlink" href="#contact">Contact</a>
-      <a class="btn solid" href="#contact">Request Engineering Services</a>
+      <a class="navlink" data-analytics-nav="services" href="#services">Services</a>
+      <a class="navlink" data-analytics-nav="about" href="#about">About</a>
+      <a class="navlink" data-analytics-nav="tools" href="#tools">Calculators</a>
+      <a class="navlink" data-analytics-nav="contact" href="#contact">Contact</a>
+      <a class="btn solid" data-analytics-cta="request_services" data-analytics-placement="header" href="#contact">Request Engineering Services</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <section class="hero" style="border-top:none;">
+  <section class="hero" data-analytics-section="hero" style="border-top:none;">
     <div class="grid-mark" aria-hidden="true"></div>
     <span class="eyebrow">Florida Engineering Consultants</span>
     <h1 style="margin-top:12px;">Civil, structural and hydraulic engineering for projects across Florida.</h1>
     <p class="lede">Aule Engineering Consultants, LLC provides engineering design, review, permitting and construction support for residential, commercial and municipal projects &mdash; led directly by a Florida-licensed Professional Engineer.</p>
     <div class="ctarow">
-      <a class="btn solid" href="#contact">Request Engineering Services</a>
-      <a class="btn" href="#services">View Capabilities</a>
+      <a class="btn solid" data-analytics-cta="request_services" data-analytics-placement="hero" href="#contact">Request Engineering Services</a>
+      <a class="btn" data-analytics-cta="view_capabilities" href="#services">View Capabilities</a>
     </div>
   </section>
 
-  <section id="services">
+  <section id="services" data-analytics-section="services">
     <span class="eyebrow">Engineering Capabilities</span>
     <div class="cap-grid">
-      <div class="cap">
+      <div class="cap" data-analytics-service="Pool &amp; Spa Engineering">
         <h3>Pool &amp; Spa Engineering</h3>
         <p>Structural and hydraulic engineering for residential and commercial pools, spas, equipment modifications, and permitting.</p>
       </div>
-      <div class="cap">
+      <div class="cap" data-analytics-service="Civil &amp; Site Engineering">
         <h3>Civil &amp; Site Engineering</h3>
         <p>Site grading, drainage, utilities, pavement, and water and sewer infrastructure, with permit coordination.</p>
       </div>
-      <div class="cap">
+      <div class="cap" data-analytics-service="Construction Engineering">
         <h3>Construction Engineering</h3>
         <p>Engineering support during construction &mdash; field evaluations, design clarification, and conformance review.</p>
       </div>
-      <div class="cap">
+      <div class="cap" data-analytics-service="Project &amp; Owner Representation">
         <h3>Project &amp; Owner Representation</h3>
         <p>Engineering-led coordination, constructability review, agency coordination, and project management.</p>
       </div>
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" data-analytics-section="about">
     <span class="eyebrow">Experienced Leadership, Independent Attention</span>
     <div class="about-grid">
       <div class="about-bio">
@@ -202,7 +202,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="process" data-analytics-section="process">
     <span class="eyebrow">How We Work</span>
     <div class="steps">
       <div class="step">
@@ -242,17 +242,17 @@
     </div>
   </section>
 
-  <section id="tools">
+  <section id="tools" data-analytics-section="tools">
     <span class="eyebrow">Engineering Calculators</span>
     <h2 style="margin-top:12px; font-size:1.4rem;">Tools used in Aule's practice.</h2>
     <p style="color:var(--muted); margin-top:10px; max-width:56ch;">Calculators developed by Current &amp; Craft, LLC and used by Aule under license in its own engineering practice, made available here as a reference. Results are a working aid &mdash; not a substitute for a sealed engineering review.</p>
     <div class="tools-grid">
-      <div class="tool-card">
+      <div class="tool-card" data-analytics-tool="copestone">
         <h3>Copestone</h3>
         <p>Pool &amp; spa design calculator &mdash; flotation/uplift, shell reinforcement, hydraulics, vent schedule, electrical load, and lot coverage checks.</p>
         <a class="btn" href="https://copestone.onrender.com" target="_blank" rel="noopener" data-tool="copestone">Open Copestone &rarr;</a>
       </div>
-      <div class="tool-card">
+      <div class="tool-card" data-analytics-tool="stormroute">
         <h3>StormRoute</h3>
         <p>Stormwater routing &amp; permitting calculator for South Florida site drainage modeling.</p>
         <a class="btn" href="https://hydraulic-modeling.onrender.com" target="_blank" rel="noopener" data-tool="stormroute">Open StormRoute &rarr;</a>
@@ -260,7 +260,7 @@
     </div>
   </section>
 
-  <section id="contact" style="border-bottom:none;">
+  <section id="contact" data-analytics-section="contact" style="border-bottom:none;">
     <span class="eyebrow">Get in Touch</span>
     <h2 style="margin-top:12px; font-size:1.5rem;">Request engineering services.</h2>
     <p style="color:var(--muted); margin-top:10px; max-width:50ch;">Reach out by phone or email with your project, and Aule Engineering will follow up with scope and timing.</p>
@@ -269,14 +269,14 @@
         <span class="eyebrow">Phone</span>
         <div class="v">
           <span id="phoneText">(239) 898-1664</span>
-          <button class="copybtn" id="copyPhone" type="button">Copy</button>
+          <button class="copybtn" id="copyPhone" data-analytics-contact="phone" type="button">Copy</button>
         </div>
       </div>
       <div class="contact-item">
         <span class="eyebrow">Email</span>
         <div class="v">
           <span id="emailText">mplepera@auleengineering.com</span>
-          <button class="copybtn" id="copyEmail" type="button">Copy</button>
+          <button class="copybtn" id="copyEmail" data-analytics-contact="email" type="button">Copy</button>
         </div>
       </div>
     </div>
@@ -336,8 +336,8 @@
   wireCopy('copyPhone','phoneText');
   wireCopy('copyEmail','emailText');
 
-  // Traffic-only analytics is handled by privacy-analytics.js.
-  // No contact, calculator, form or engagement event details are collected.
+  // Privacy-aware site analytics is handled by privacy-analytics.js.
+  // No phone numbers, email addresses, form data, or project data are included in GA4 events.
 </script>
 </body>
 </html>
